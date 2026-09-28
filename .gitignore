@@ -49,3 +49,6 @@ storybook-static
 /storybook-static
 /.lighthouseci
 *.tsbuildinfo
+
+# local Claude Code settings
+/.claude/

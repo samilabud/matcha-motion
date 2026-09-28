@@ -1,7 +1,12 @@
 "use client";
 
-import { LazyMotion, MotionConfig } from "motion/react";
+import { LazyMotion, MotionConfig, MotionGlobalConfig } from "motion/react";
 import { duration, ease } from "@/lib/motion/tokens";
+
+// Set by Playwright (tests/visual.spec.ts) so screenshots capture end states, never mid-animation frames.
+if (typeof window !== "undefined" && (window as { __SKIP_MOTION__?: boolean }).__SKIP_MOTION__) {
+  MotionGlobalConfig.skipAnimations = true;
+}
 
 const loadFeatures = () => import("./features").then((m) => m.default);
 
