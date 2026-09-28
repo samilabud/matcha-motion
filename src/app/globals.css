@@ -21,6 +21,7 @@
   --color-line: var(--ds-color-border-default);
   --color-line-strong: var(--ds-color-border-strong);
   --color-scrim: var(--ds-color-overlay-scrim);
+  --color-danger: var(--ds-color-feedback-danger);
   /* Teal on white is only 2.6:1, below the 3:1 non-text minimum, so focus rings use the text color. */
   --color-focus: var(--ds-color-text-primary);
   --color-transparent: transparent;
@@ -63,6 +64,9 @@
   /* next/font variables (see layout.tsx); the Figma token names the family, next/font loads it. */
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-serif: var(--font-dm-serif), Georgia, serif;
+
+  /* borders */
+  --border-danger-border: var(--ds-color-feedback-danger-border);
 }
 
 @layer base {

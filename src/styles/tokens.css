@@ -55,6 +55,7 @@
   --ds-color-system-red-200: #fac6d0;
   --ds-color-system-red-300: #fb93a3;
   --ds-color-system-red-400: #fe566b;
+  --ds-color-system-red-500: #cc4556;
   --ds-color-system-blue-100: #e3efff;
   --ds-color-system-blue-200: #c3ddff;
   --ds-color-system-blue-300: #8dc1ff;
@@ -111,6 +112,8 @@
   --ds-color-action-on-primary: var(--ds-color-neutral-800);
   --ds-color-border-default: var(--ds-color-neutral-300);
   --ds-color-border-strong: var(--ds-color-neutral-400);
+  --ds-color-feedback-danger: var(--ds-color-system-red-500);
+  --ds-color-feedback-danger-border: var(--ds-color-system-red-400);
   --ds-font-size-display-2: var(--ds-font-size-base);
   --ds-font-size-body-default: var(--ds-font-size-base);
   --ds-container-padding-x: var(--ds-size-5);

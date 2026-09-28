@@ -682,6 +682,25 @@
             "ALL_SCOPES"
           ]
         }
+      },
+      "500": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.800000011920929,
+            0.2705882489681244,
+            0.33725491166114807
+          ],
+          "alpha": 1,
+          "hex": "#CC4556"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:23513:6718",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ]
+        }
       }
     },
     "Blue": {
