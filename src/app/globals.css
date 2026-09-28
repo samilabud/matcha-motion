@@ -1,0 +1,41 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+@import "../styles/tokens.dark.css";
+
+/* Only design-system tokens exist as utilities. `bg-blue-500` will not compile. */
+@theme inline {
+  --color-*: initial;
+  --color-canvas: var(--ds-color-bg-canvas);
+  --color-surface: var(--ds-color-bg-surface);
+  --color-surface-hover: var(--ds-color-bg-surface-hover);
+  --color-overlay: var(--ds-color-bg-overlay);
+  --color-fg: var(--ds-color-text-primary);
+  --color-muted: var(--ds-color-text-muted);
+  --color-on-accent: var(--ds-color-text-on-accent);
+  --color-accent: var(--ds-color-brand-accent);
+  --color-accent-hover: var(--ds-color-brand-accent-hover);
+  --color-border: var(--ds-color-border-default);
+  --color-focus: var(--ds-color-border-focus);
+  --color-success: var(--ds-color-status-success);
+  --color-transparent: transparent;
+
+  --radius-*: initial;
+  --radius-control: var(--ds-radius-control);
+  --radius-card: var(--ds-radius-card);
+  --radius-sheet: var(--ds-radius-sheet);
+  --radius-full: 9999px;
+
+  --ease-*: initial;
+  --ease-out: var(--ds-motion-ease-out);
+  --ease-in: var(--ds-motion-ease-in);
+  --ease-in-out: var(--ds-motion-ease-in-out);
+
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+/* Default border color comes from the token, not currentColor. */
+@layer base {
+  *, ::before, ::after { border-color: var(--color-border); }
+  body { background: var(--color-canvas); color: var(--color-fg); }
+}

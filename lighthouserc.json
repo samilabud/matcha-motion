@@ -1,0 +1,19 @@
+{
+  "ci": {
+    "collect": {
+      "startServerCommand": "npx next start -p 3100",
+      "url": ["http://localhost:3100/"],
+      "numberOfRuns": 5,
+      "settings": { "preset": "mobile" }
+    },
+    "assert": {
+      "assertions": {
+        "largest-contentful-paint": ["error", { "maxNumericValue": 2500, "aggregationMethod": "median" }],
+        "cumulative-layout-shift": ["error", { "maxNumericValue": 0.05, "aggregationMethod": "median" }],
+        "total-blocking-time": ["warn", { "maxNumericValue": 200, "aggregationMethod": "median" }],
+        "categories:accessibility": ["error", { "minScore": 1 }]
+      }
+    },
+    "upload": { "target": "temporary-public-storage" }
+  }
+}

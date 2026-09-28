@@ -1,0 +1,22 @@
+{
+  "motion": {
+    "duration": {
+      "$type": "duration",
+      "instant": { "$value": "100ms" },
+      "fast":    { "$value": "150ms" },
+      "base":    { "$value": "240ms" },
+      "slow":    { "$value": "400ms" },
+      "slower":  { "$value": "600ms" }
+    },
+    "ease": {
+      "$type": "cubicBezier",
+      "out":    { "$value": [0.22, 1, 0.36, 1],  "$description": "Entrances" },
+      "in":     { "$value": [0.4, 0, 1, 1],      "$description": "Exits" },
+      "in-out": { "$value": [0.65, 0, 0.35, 1],  "$description": "Moves on screen" }
+    },
+    "stagger": {
+      "$type": "duration",
+      "base": { "$value": "40ms" }
+    }
+  }
+}

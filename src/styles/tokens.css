@@ -1,0 +1,49 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --ds-color-neutral-0: #ffffff;
+  --ds-color-neutral-50: #f5f6f8;
+  --ds-color-neutral-100: #eceef2;
+  --ds-color-neutral-200: #dce0e7;
+  --ds-color-neutral-300: #9aa3b5;
+  --ds-color-neutral-500: #586072;
+  --ds-color-neutral-800: #1c2130;
+  --ds-color-neutral-850: #161a24;
+  --ds-color-neutral-900: #0f121a;
+  --ds-color-neutral-950: #0a0c12;
+  --ds-color-blue-300: #7f9bff;
+  --ds-color-blue-400: #5a7bf0;
+  --ds-color-blue-600: #2a4fd6;
+  --ds-color-blue-700: #213fb0;
+  --ds-color-green-400: #4cc38a;
+  --ds-color-green-600: #1d8157;
+  --ds-color-bg-overlay: rgba(15, 18, 26, 0.6);
+  --ds-radius-sm: 6px;
+  --ds-radius-md: 10px;
+  --ds-radius-lg: 16px;
+  --ds-motion-duration-instant: 100ms;
+  --ds-motion-duration-fast: 150ms;
+  --ds-motion-duration-base: 240ms;
+  --ds-motion-duration-slow: 400ms;
+  --ds-motion-duration-slower: 600ms;
+  --ds-motion-ease-out: cubic-bezier(0.22, 1, 0.36, 1); /** Entrances */
+  --ds-motion-ease-in: cubic-bezier(0.4, 0, 1, 1); /** Exits */
+  --ds-motion-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1); /** Moves on screen */
+  --ds-motion-stagger-base: 40ms;
+  --ds-color-bg-canvas: var(--ds-color-neutral-50);
+  --ds-color-bg-surface: var(--ds-color-neutral-0);
+  --ds-color-bg-surface-hover: var(--ds-color-neutral-100);
+  --ds-color-text-primary: var(--ds-color-neutral-900);
+  --ds-color-text-muted: var(--ds-color-neutral-500);
+  --ds-color-text-on-accent: var(--ds-color-neutral-0);
+  --ds-color-brand-accent: var(--ds-color-blue-600);
+  --ds-color-brand-accent-hover: var(--ds-color-blue-700);
+  --ds-color-border-default: var(--ds-color-neutral-200);
+  --ds-color-border-focus: var(--ds-color-blue-600);
+  --ds-color-status-success: var(--ds-color-green-600);
+  --ds-radius-control: var(--ds-radius-sm);
+  --ds-radius-card: var(--ds-radius-md);
+  --ds-radius-sheet: var(--ds-radius-lg);
+}
