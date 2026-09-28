@@ -9,7 +9,7 @@ const meta = {
   args: {
     items: ITEMS,
     getKey: (i) => i.id,
-    renderItem: (i) => <div className="rounded-card border bg-surface p-4">{i.label}</div>,
+    renderItem: (i) => <div className="rounded-2 border bg-canvas p-4">{i.label}</div>,
     className: "grid grid-cols-3 gap-3",
     cap: 8,
   },

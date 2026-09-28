@@ -1,4 +1,6 @@
-# Motion DS Starter
+# Matcha — Motion DS Starter
+
+Matcha by BRIX Templates (Figma Community), rebuilt as a design system.
 
 Figma variables → Style Dictionary → Tailwind v4 tokens → a component layer with no per-screen values, plus Motion set up for performance and accessibility from day one.
 
@@ -24,11 +26,11 @@ Playwright browsers are needed for story tests and e2e: `npx playwright install 
 |---|---|
 | `npm run dev` | Rebuilds tokens, starts the dev server |
 | `npm run build` / `npm start` | Production build (rebuilds tokens first) / serve it |
-| `npm run tokens` | `tokens/*.json` → `src/styles/tokens*.css` + `src/lib/motion/tokens.generated.ts` |
+| `npm run tokens` | Figma exports in `tokens/figma/` + `tokens/motion.json` → `src/styles/tokens.css` + `src/lib/motion/tokens.generated.ts` |
 | `npm run tokens:check` | Rebuilds tokens and fails if the generated files differ from git (needs a commit) |
 | `npm run lint` / `npm run typecheck` | ESLint / `tsc --noEmit` |
 | `npm run check:hardcoded` | Fails if `src/app` contains arbitrary Tailwind values or raw colors |
-| `npm run storybook` | Component workbench on :6006 (theme toggle in the toolbar) |
+| `npm run storybook` | Component workbench on :6006 |
 | `npm run test:stories` | Story tests in a real browser: play functions + axe on every story |
 | `npm run test:e2e` | Playwright against a production build on :3100 (axe per route, focus tests, screenshots) |
 | `npm run test:visual:update` | Regenerates screenshot baselines **inside the Playwright Docker image**, so they match CI |
@@ -38,30 +40,28 @@ Playwright browsers are needed for story tests and e2e: `npx playwright install 
 ## How the layers fit
 
 ```
-tokens/                     ← DTCG JSON exported from Figma variables (the only place values live)
-  primitive.json              raw palette, radii (screens never use these directly)
-  semantic.light.json         meaning: bg/text/brand/border/status, aliases primitives
-  semantic.dark.json          dark mode: same names, different aliases
-  motion.json                 durations, easings, stagger
-sd.config.mjs               ← Style Dictionary build (CSS vars with ds- prefix + TS motion tokens)
-src/styles/tokens*.css      ← generated, do not edit
-src/app/globals.css         ← @theme maps semantic vars to utilities; Tailwind's default palette is removed
-src/lib/motion/tokens.ts    ← motion tokens for Motion (+ springs, which DTCG can't express yet)
-src/components/ui/          ← primitives; variant names match Figma component properties
-src/components/patterns/    ← compositions (CartDrawer, ShopDemo)
-src/components/motion/      ← MotionProvider, StaggerList, ScrollProgress
-src/app/                    ← screens: compose patterns only (enforced by check:hardcoded)
-tests/                      ← Playwright: a11y.spec.ts, visual.spec.ts, routes.ts (routes under test)
-.storybook/                 ← preview wraps stories in MotionProvider; a11y violations fail tests
+tokens/figma/core.tokens.json      ← Figma "Core" collection (primitives), native Figma export
+tokens/figma/semantic.tokens.json  ← Figma "Semantic" collection: bg/text/action/border/overlay → Core
+tokens/motion.json                 ← durations, easings, stagger (Figma has no motion variables)
+sd.config.mjs                      ← renames Figma names to a code scale, restores aliases, builds CSS + TS
+src/styles/tokens.css              ← generated: --ds-* custom properties
+src/app/globals.css                ← @theme maps Semantic colors, BR radii, font sizes; default palette removed
+src/lib/fonts.ts                   ← Inter + DM Serif Display via next/font (shared with Storybook)
+src/components/ui/                 ← primitives; variant names match Figma component properties
+src/components/patterns/           ← compositions (CartDrawer, ShopDemo)
+src/components/motion/             ← MotionProvider, StaggerList, ScrollProgress
+src/app/                           ← screens: compose patterns only (enforced by check:hardcoded)
 ```
 
-**Changing a token:** edit the Figma variable → re-export into `tokens/` → `npm run tokens`. Every component updates. CI's `tokens:check` fails if generated files are stale, so commit the generated output too.
+**Changing a token:** edit the variable in Figma → export the collection (right-click → Export) into `tokens/figma/` with the same file name → `npm run tokens`. CI's `tokens:check` fails if generated files are stale.
 
-**Adding a color:** add it to both `semantic.light.json` and `semantic.dark.json`, then map it in `@theme` in `globals.css`. Anything not mapped does not exist as a utility: `bg-blue-500` won't compile, `bg-accent` will.
+**Adding a color:** add it to the Figma Semantic collection pointing at a Core variable, re-export, then map it in `@theme` in `globals.css`. Anything not mapped does not exist as a utility.
 
-**Adding a component:** put primitives in `src/components/ui/` with `cva` variants named after the Figma component properties (see `button.tsx`), and write a `*.stories.tsx` next to it. Story tests run axe on every story automatically. Screens in `src/app/` should only compose components. If a screen needs a one-off value, add a token or a variant instead.
-
-**Dark mode:** a script in `layout.tsx` sets `data-theme="dark"` before paint when the OS prefers dark. Only the semantic layer changes under `[data-theme="dark"]`; primitives stay the same.
+**Decisions made on top of the source design (case-study material):**
+- `action/on-primary` is dark green, not white: white on `#06B791` is 2.56:1 and fails WCAG AA; dark green is 4.68:1.
+- `text/muted` uses Neutrals 700, not 600: Neutrals 600 on white is 3.73:1.
+- Focus rings use `text/primary`: teal on white fails the 3:1 non-text contrast minimum.
+- Social media and logo colors from Core are left out of the build.
 
 ## Motion decisions already made
 
@@ -90,6 +90,6 @@ Lighthouse budgets (`lighthouserc.json`, median of 5 mobile runs): LCP ≤ 2.5s 
 ## First steps
 
 1. `git add -A && git commit -m "Starter"`. The CI `tokens:check` step compares against git, so it needs a commit.
-2. Replace `tokens/*.json` with the export from your Figma file and run `npm run tokens`.
+2. ~~Replace the placeholder tokens with your Figma export~~ Done: Matcha Core + Semantic are in `tokens/figma/`.
 3. Add routes to `tests/routes.ts` as you build them, then run `npm run test:visual:update` once Docker is running.
 4. Build a naive `baseline` branch in week 4 and measure both branches with `npm run lhci` and `npm run analyze`.

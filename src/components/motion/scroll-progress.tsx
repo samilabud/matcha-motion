@@ -11,7 +11,7 @@ export function ScrollProgress() {
     <m.div
       aria-hidden
       style={{ scaleX, transformOrigin: "0%" }}
-      className="fixed inset-x-0 top-0 z-50 h-1 bg-accent"
+      className="fixed inset-x-0 top-0 z-50 h-1 bg-action"
     />
   );
 }

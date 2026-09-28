@@ -32,7 +32,7 @@ export function ShopDemo() {
   return (
     <div ref={scope} className="flex flex-col gap-8">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-semibold">Products</h2>
+        <h2 className="font-serif text-display-7">All products</h2>
         <CartDrawer
           open={open}
           onOpenChange={setOpen}
@@ -43,7 +43,7 @@ export function ShopDemo() {
               <span
                 data-cart-badge
                 aria-hidden
-                className="inline-grid min-w-6 place-items-center rounded-full bg-accent px-1.5 text-sm text-on-accent tabular-nums"
+                className="inline-grid min-w-6 place-items-center rounded-full bg-action px-1.5 text-body-sm text-on-action tabular-nums"
               >
                 {cart.length}
               </span>
@@ -57,8 +57,8 @@ export function ShopDemo() {
         items={PRODUCTS}
         getKey={(p) => p.id}
         renderItem={(p) => (
-          <article className="flex flex-col gap-4 rounded-card border bg-surface p-5">
-            <div aria-hidden className="aspect-4/3 rounded-control bg-surface-hover" />
+          <article className="flex flex-col gap-4 rounded-2 border bg-canvas p-5">
+            <div aria-hidden className="aspect-4/3 rounded-2 bg-subtle" />
             <div className="flex items-baseline justify-between">
               <h3 className="font-medium">{p.name}</h3>
               <span className="text-muted tabular-nums">${p.price}</span>

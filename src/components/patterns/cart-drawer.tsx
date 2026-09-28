@@ -32,7 +32,7 @@ export function CartDrawer({
           <Dialog.Portal forceMount>
             <Dialog.Overlay asChild forceMount>
               <m.div
-                className="fixed inset-0 z-40 bg-overlay"
+                className="fixed inset-0 z-40 bg-scrim"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0, transition: exit }}
@@ -40,7 +40,7 @@ export function CartDrawer({
             </Dialog.Overlay>
             <Dialog.Content asChild forceMount aria-describedby={undefined}>
               <m.aside
-                className="fixed inset-y-0 right-0 z-50 flex w-full max-w-md flex-col gap-6 bg-surface p-6 shadow-xl"
+                className="fixed inset-y-0 right-0 z-50 flex w-full max-w-md flex-col gap-6 bg-canvas p-6 shadow-xl"
                 initial={{ x: "100%" }}
                 animate={{ x: 0, transition: spring.snappy }}
                 exit={{ x: "100%", transition: exit }}
@@ -52,7 +52,7 @@ export function CartDrawer({
                 }}
               >
                 <div className="flex items-center justify-between">
-                  <Dialog.Title className="text-xl font-semibold">Your cart</Dialog.Title>
+                  <Dialog.Title className="font-serif text-display-6">Your cart</Dialog.Title>
                   <Dialog.Close asChild>
                     <Button variant="ghost" size="sm">Close</Button>
                   </Dialog.Close>
@@ -71,7 +71,7 @@ export function CartDrawer({
                 )}
                 <div className="mt-auto flex items-center justify-between border-t pt-4">
                   <span className="text-muted">Total</span>
-                  <span className="text-lg font-semibold tabular-nums">${total}</span>
+                  <span className="text-body-lg font-semibold tabular-nums">${total}</span>
                 </div>
               </m.aside>
             </Dialog.Content>
