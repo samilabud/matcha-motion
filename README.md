@@ -35,7 +35,7 @@ Playwright browsers are needed for story tests and e2e: `npx playwright install 
 | `npm run test:e2e` | Playwright against a production build on :3100 (axe per route, focus tests, screenshots) |
 | `npm run test:visual:update` | Regenerates screenshot baselines **inside the Playwright Docker image**, so they match CI |
 | `npm run analyze` | Turbopack bundle analyzer, written to disk for before/after diffs |
-| `npm run lhci` | Lighthouse CI: mobile preset, 5 runs, median, with budgets |
+| `npm run lhci` | Lighthouse CI: mobile, applied (DevTools) throttling, 5 runs, median, with budgets. Simulated throttling counts every script that loaded before paint on localhost and reported 3.0s LCP against 0.33s observed. |
 
 ## How the layers fit
 
